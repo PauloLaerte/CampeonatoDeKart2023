@@ -8,9 +8,10 @@ Copy code
 table {
   border-collapse: collapse;
   margin-top: 80px;
-  margin-left: 300px;
+  margin-left: 250px;
   background-color: #363636;
   color: #eee;
+  width: 70%;
 }
 
 th, td {
