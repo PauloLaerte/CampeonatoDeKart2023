@@ -30,23 +30,55 @@
 				type: 'line',
 				data: {
 					labels: ['Corrida 1', 'Corrida 2', 'Corrida 3', 'Corrida 4', 'Corrida 5', 'Corrida 6'],
-					datasets: [{
-						label: 'Resultado',
-						data: [12, 19, 3, 5, 2, 3],
-						backgroundColor: 'rgba(54, 162, 235, 0.2)',
-						borderColor: 'rgba(54, 162, 235, 1)',
-						borderWidth: 1,
-						tension: 0.3
-					}]
+					datasets: [
+						{
+							label: 'Resultado 1',
+							data: [50.33, 0, 45, ],
+							backgroundColor: 'rgba(54, 162, 235, 0.2)',
+							borderColor: 'rgba(54, 162, 235, 1)',
+							borderWidth: 4,
+							tension: 0
+						},
+						{
+							label: 'Resultado 2',
+							data: [45, 50, 47, 52, 48, 50],
+							backgroundColor: 'rgba(255, 99, 132, 0.2)',
+							borderColor: 'rgba(255, 99, 132, 1)',
+							borderWidth: 4,
+							tension: 0
+						}
+					]
 				},
-				options: {
-					scales: {
+					options: {
+						layout: {
+							padding: {
+								left: 250,
+								right: 50
+							}
+						},
+						scales: {
 						y: {
-							beginAtZero: true
+								beginAtZero: true
+							}
+						},
+						legend: {
+						display: true,
+						position: 'bottom',
+						labels: {
+							fontColor: 'black'
 						}
 					}
 				}
 			});
+			function changeLegendColor() {
+				var legend = chart.options.plugins.legend;
+				if (legend.labels.fontColor === 'black') {
+					legend.labels.fontColor = 'red';
+				} else {
+					legend.labels.fontColor = 'black';
+				}
+				chart.update();
+			}
    		</script>
 		<p></p>
 	</main>
