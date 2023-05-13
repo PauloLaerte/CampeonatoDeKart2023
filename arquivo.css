@@ -79,8 +79,8 @@ nav ul li a {
   display: block;
   color: #eee;
   text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 8px 5px;
+  border-radius: 8px;
   transition: background-color 0.3s ease-in-out;
 }
 
@@ -126,7 +126,7 @@ p {
   text-decoration: none;
   text-align: left;
   margin-left: 300px;
-  padding: 10px;
+  padding: 5px;
 }
 
 /* Define o estilo de um botão */
