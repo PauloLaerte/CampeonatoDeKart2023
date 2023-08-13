@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Campeonato de Kart 2023</title>
+    <link rel="stylesheet" type="text/css" href="arquivo.css">
+</head>
+<body>
+<!-- Conteúdo da página -->
+
+<script>
+        // Função para extrair as informações da página e criar o JSON
+        function criarJSON() {
+            const equipes = [];
+
+            // Percorre as tabelas de equipes e pilotos
+            const tabelas = document.getElementsByTagName('table');
+            for (const tabela of tabelas) {
+                const equipe = { pilotos: [] };
+                const colunasEquipe = tabela.rows[0].cells;
+
+                // Pega o nome da equipe na segunda célula da primeira linha
+                equipe.nomeEquipe = colunasEquipe[1].innerText;
+
+                for (let i = 1; i < tabela.rows.length; i++) {
+                    const piloto = {};
+                    const colunasPiloto = tabela.rows[i].cells;
+
+                    // Pega o nome do piloto na segunda célula da linha
+                    piloto.nome = colunasPiloto[1].innerText;
+
+                    // Pega o caminho da foto do piloto na primeira célula da linha
+                    piloto.foto = colunasPiloto[0].querySelector('img').getAttribute('src');
+
+                    equipe.pilotos.push(piloto);
+                }
+
+                equipes.push(equipe);
+            }
+
+            const campeonatoJSON = JSON.stringify(equipes, null, 2);
+
+            // Exibir o JSON no console (opcional)
+            console.log(campeonatoJSON);
+
+            // Aqui você pode enviar o JSON para um servidor ou salvá-lo em um arquivo
+            // Por exemplo, se quiser salvar localmente em um arquivo JSON:
+            const blob = new Blob([campeonatoJSON], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'campeonato.json';
+            a.click();
+        }
+
+        // Chama a função para criar o JSON após o carregamento da página
+        window.addEventListener('load', criarJSON);
+    </script>
+</body>
+</html>
